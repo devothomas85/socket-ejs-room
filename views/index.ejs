@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Chat App</title>
+  </head>
+  <body>
+    <div class="chat-home-container">
+      <header class="chat-header">
+        <h1>ChatRoom</h1>
+        <a href="/room"><i class="fas fa-plus"></i></a>
+        <a href="/" class="btn">Quit</a>
+      </header>
+      <main class="chat-home-main">
+        <div class="room-container chat-home-sidebar">
+          <h3>Groups</h3>
+          <ul id="groups">
+            <% Object.keys(rooms).forEach(room => { %>
+            <!-- <div><%= room %></div> -->
+            <li><a class="a-cl" href="/<%= room %>"><%= room %></a></li>
+            <% }) %>
+          </ul>
+        </div>
+      </main>
+      <div class="chat-form-container">
+        <form action="/room" method="POST">
+          <input name="room" type="text" required />
+          <button type="submit">Create Room</button>
+        </form>
+      </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
